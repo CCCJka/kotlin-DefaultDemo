@@ -6,15 +6,37 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:background="@color/dark_green"
-        android:alpha="0.2"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/user"
+            android:layout_gravity="center|top" />
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rl_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_green"
+            android:orientation="vertical"
+            android:layout_marginTop="150dp" />
+
+        <Button
+            android:id="@+id/btn_log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"/>
+
+    </FrameLayout>
+
+
 
     <RelativeLayout
-        android:id="@+id/rl_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
