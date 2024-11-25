@@ -84,5 +84,7 @@ class WebActivity: AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        webContainer.removeAllViews()
+
     }
 }

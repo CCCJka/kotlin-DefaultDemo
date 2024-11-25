@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btn_camera: Button
     private lateinit var btn_webView: Button
     private lateinit var btn_media: Button
-    private lateinit var btn_undefine3: Button
+    private lateinit var btn_animation: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         btn_camera = findViewById(R.id.click_camera)
         btn_webView = findViewById(R.id.click_webview)
         btn_media = findViewById(R.id.click_media)
-//        btn_ = findViewById(R.id.)
+        btn_animation = findViewById(R.id.click_animation)
 
         btn_camera.setOnClickListener{
             CommonUtils.navigation(this, CameraActivity::class.java)
@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         btn_media.setOnClickListener{
             CommonUtils.navigation(this, MediaActivity::class.java)
         }
-//        btn_.setOnClickListener{
-//            CommonUtils.navigation(this,)
-//        }
+        btn_animation.setOnClickListener{
+            CommonUtils.navigation(this,AnimationActivity::class.java)
+        }
     }
 }

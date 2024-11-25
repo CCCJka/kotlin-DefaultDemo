@@ -87,14 +87,14 @@ class MediaActivity: AppCompatActivity() {
             mediaPlayer.stop()
         }
 
-        /** 使用VideoView进行视频播放,画面不拉伸播放
-        val videoView = VideoView(this)
-        videoView.setVideoPath(file.path)
-        videoView.start()
-        videoView.setOnPreparedListener{
-        it.isLooping = true
-        }
-        rl_media.addView(videoView)*/
+//        //使用VideoView进行视频播放,画面不拉伸播放
+//        val videoView = VideoView(this)
+//        videoView.setVideoPath(file.path)
+//        videoView.start()
+//        videoView.setOnPreparedListener{
+//        it.isLooping = true
+//        }
+//        rl_media.addView(videoView)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
