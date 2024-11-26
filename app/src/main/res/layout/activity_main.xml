@@ -9,50 +9,50 @@
 
         <Button
             android:id="@+id/click_webview"
-            android:layout_width="300px"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="加载网页"
+            android:text="@string/load_web"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="100px"
-            android:layout_marginRight="300px"/>
+            android:layout_marginBottom="70dp"
+            android:layout_marginEnd="125dp"/>
 
         <Button
             android:id="@+id/click_media"
-            android:layout_width="300px"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="100px"
-            android:layout_marginLeft="150dp"
-            android:text="音视频"/>
+            android:layout_marginBottom="70dp"
+            android:layout_marginStart="125dp"
+            android:text="@string/media"/>
 
         <Button
             android:id="@+id/click_animation"
-            android:layout_width="300px"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="200px"
-            android:layout_marginRight="300px"
-            android:text="动画"/>
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="125dp"
+            android:text="@string/animation"/>
 
         <Button
             android:id="@+id/click_camera"
-            android:layout_width="300px"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="相机"
+            android:text="@string/camera"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="200px"
-            android:layout_marginLeft="150dp"/>
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="125dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

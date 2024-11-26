@@ -7,7 +7,7 @@
         android:id="@+id/side_item_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="100px"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:textColorLink="@color/black"
         android:layout_marginTop="10dp" />

@@ -56,7 +56,7 @@ class CameraActivity: AppCompatActivity() {
     }
 
     private fun initAll(){
-        initData()
+        intView()
         if (allPermissionsGranted()) {
             startCamera()
         } else {
@@ -64,7 +64,7 @@ class CameraActivity: AppCompatActivity() {
         }
     }
 
-    private fun initData(){
+    private fun intView(){
         btn_capture = findViewById(R.id.btn_capture)
         previewView = findViewById(R.id.viewFinder)
         tv_status = findViewById(R.id.tv_recording_status)

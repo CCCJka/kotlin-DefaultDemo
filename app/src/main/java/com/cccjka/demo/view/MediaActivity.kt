@@ -65,10 +65,14 @@ class MediaActivity: AppCompatActivity() {
 
     private fun initAll(){
 //        rl_media = findViewById(R.id.rl_media)
+        initView()
+        initData()
+    }
+
+    private fun initView() {
         sv_media = findViewById(R.id.sv_media)
         btn_select = findViewById(R.id.btn_select)
         btn_show_select = findViewById(R.id.btn_show_select)
-        initData()
     }
 
     private fun initData(){

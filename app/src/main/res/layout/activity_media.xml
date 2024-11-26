@@ -19,16 +19,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="选择文件"/>
+        android:text="@string/choose_file"/>
 
     <Button
         android:id="@+id/btn_show_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:visibility="gone"
-        android:text="选择文件"/>
+        android:text="@string/choose_file"/>
 
 </FrameLayout>

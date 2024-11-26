@@ -31,16 +31,19 @@ class WebActivity: AppCompatActivity() {
     }
 
     private fun initAll(){
+        initView()
         initData()
         initWeb("")
     }
 
-    private fun initData(){
+    private fun initView() {
         webContainer = findViewById(R.id.web_container)
         et_search = findViewById(R.id.et_search_content)
         btn_search = findViewById(R.id.btn_search)
         btn_show_search = findViewById(R.id.btn_show_search)
+    }
 
+    private fun initData(){
         btn_search.setOnClickListener{
             btn_search.visibility = View.GONE
             et_search.visibility = View.GONE
@@ -73,7 +76,7 @@ class WebActivity: AppCompatActivity() {
         }
         webView.webViewClient = webViewClient
         if (url == null || url.equals("")){
-            webView.loadUrl("https://jslrepository.us.kg")
+            webView.loadUrl("web_site_addr")
             webContainer.addView(webView)
         } else{
             webContainer.removeAllViews()

@@ -6,39 +6,38 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-    <FrameLayout
+    <RelativeLayout
+        android:id="@+id/rl_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/user"
-            android:layout_gravity="center|top" />
+            android:layout_gravity="center" />
         
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rl_item"
+            android:id="@+id/rv_item"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/dark_green"
-            android:orientation="vertical"
-            android:layout_marginTop="150dp" />
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_log_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|bottom"/>
+            android:layout_gravity="start"/>
 
-    </FrameLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    </LinearLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

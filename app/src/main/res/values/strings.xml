@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">DefaultDemo</string>
+    <string name="camera_status">单击拍照/长按录像</string>
+    <string name="fragment_main_title">浏览页面</string>
+    <string name="load_web">加载网页</string>
+    <string name="camera">相机</string>
+    <string name="animation">动画</string>
+    <string name="media">音视频</string>
+    <string name="choose_file">选择文件</string>
+    <string name="input_web_address">输入网址</string>
+    <string name="search">搜索</string>
+    <string name="open_search">打开搜索</string>
+    <string name="user_name">用户名：</string>
+    <string name="share_success">分享成功</string>
+    <string name="confirm">确定</string>
 </resources>

@@ -33,14 +33,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAll(){
         ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, PackageManager.PERMISSION_GRANTED)
+        initView()
         initData()
     }
 
-    private fun initData(){
+    private fun initView() {
         btn_camera = findViewById(R.id.click_camera)
         btn_webView = findViewById(R.id.click_webview)
         btn_media = findViewById(R.id.click_media)
         btn_animation = findViewById(R.id.click_animation)
+    }
+
+    private fun initData(){
 
         btn_camera.setOnClickListener{
             CommonUtils.navigation(this, CameraActivity::class.java)
