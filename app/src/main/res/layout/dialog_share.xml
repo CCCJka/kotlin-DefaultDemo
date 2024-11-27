@@ -17,9 +17,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:text=""
+        android:text="以复制链接，将连接分享给好友吧"
+        android:gravity="center"
         android:layout_weight="1"/>
 
     <Button

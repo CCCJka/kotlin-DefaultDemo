@@ -59,6 +59,9 @@ dependencies {
     /** webview **/
     implementation(libs.androidx.webkit)
 
+    /** Gson*/
+    implementation(libs.gson)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

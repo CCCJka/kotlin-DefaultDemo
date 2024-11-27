@@ -7,18 +7,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cccjka.demo.R
 
-class LeftSideMenuAdapter(private val name: List<String>): RecyclerView.Adapter<LeftSideMenuAdapter.LeftSideMenuViewHolder>() {
+class LeftSideMenuAdapter(private val name: List<String>): RecyclerView.Adapter<ViewHolder.LeftSideMenuViewHolder>() {
 
-    override fun onBindViewHolder(holder: LeftSideMenuViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder.LeftSideMenuViewHolder, position: Int) {
         holder.itemInfo.text = name[position]
         holder.itemInfo.setOnClickListener {
             listener?.onClick(name[position])
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeftSideMenuViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder.LeftSideMenuViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_side_menu, parent, false)
-        return LeftSideMenuViewHolder(view)
+        return ViewHolder.LeftSideMenuViewHolder(view)
     }
 
     override fun getItemCount(): Int = name.size
@@ -31,10 +31,6 @@ class LeftSideMenuAdapter(private val name: List<String>): RecyclerView.Adapter<
 
     fun setOnItemClickListener(clickListener: clickListener){
         this.listener = clickListener
-    }
-
-    inner class LeftSideMenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var itemInfo: TextView = view.findViewById(R.id.side_item_info)
     }
 
 }
