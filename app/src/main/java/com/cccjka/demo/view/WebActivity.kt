@@ -15,18 +15,16 @@ import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isEmpty
 import com.cccjka.demo.R
+import com.cccjka.demo.databinding.ActivityWebBinding
 
 class WebActivity: AppCompatActivity() {
 
-    private lateinit var webContainer: RelativeLayout
-
-    private lateinit var et_search: EditText
-    private lateinit var btn_search: Button
-    private lateinit var btn_show_search: Button
+    private lateinit var viewBinding: ActivityWebBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_web)
+        viewBinding = ActivityWebBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
         initAll()
     }
 
@@ -37,26 +35,23 @@ class WebActivity: AppCompatActivity() {
     }
 
     private fun initView() {
-        webContainer = findViewById(R.id.web_container)
-        et_search = findViewById(R.id.et_search_content)
-        btn_search = findViewById(R.id.btn_search)
-        btn_show_search = findViewById(R.id.btn_show_search)
+
     }
 
     private fun initData(){
-        btn_search.setOnClickListener{
-            btn_search.visibility = View.GONE
-            et_search.visibility = View.GONE
-            btn_show_search.visibility = View.VISIBLE
-            webContainer.visibility = View.VISIBLE
-            initWeb(et_search.text.toString())
-            et_search.setText("")
+        viewBinding.btnSearch.setOnClickListener{
+            viewBinding.btnSearch.visibility = View.GONE
+            viewBinding.etSearchContent.visibility = View.GONE
+            viewBinding.btnShowSearch.visibility = View.VISIBLE
+            viewBinding.webContainer.visibility = View.VISIBLE
+            initWeb(viewBinding.etSearchContent.text.toString())
+            viewBinding.etSearchContent.setText("")
         }
-        btn_show_search.setOnClickListener{
-            btn_search.visibility = View.VISIBLE
-            et_search.visibility = View.VISIBLE
-            btn_show_search.visibility = View.GONE
-            webContainer.visibility = View.GONE
+        viewBinding.btnShowSearch.setOnClickListener{
+            viewBinding.btnSearch.visibility = View.VISIBLE
+            viewBinding.etSearchContent.visibility = View.VISIBLE
+            viewBinding.btnShowSearch.visibility = View.GONE
+            viewBinding.webContainer.visibility = View.GONE
         }
     }
 
@@ -77,17 +72,16 @@ class WebActivity: AppCompatActivity() {
         webView.webViewClient = webViewClient
         if (url == null || url.equals("")){
             webView.loadUrl("web_site_addr")
-            webContainer.addView(webView)
+            viewBinding.webContainer.addView(webView)
         } else{
-            webContainer.removeAllViews()
+            viewBinding.webContainer.removeAllViews()
             webView.loadUrl(url)
-            webContainer.addView(webView)
+            viewBinding.webContainer.addView(webView)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        webContainer.removeAllViews()
-
+        viewBinding.webContainer.removeAllViews()
     }
 }

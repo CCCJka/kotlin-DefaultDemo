@@ -27,9 +27,9 @@ android {
         }
     }
 
-//    buildFeatures {
-//        viewBinding true
-//    }
+    buildFeatures {
+        viewBinding = true
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -47,6 +47,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    /** 网络框架*/
+    implementation(libs.okhttp)
+    implementation (libs.retrofit)
+
+    /** RxJava*/
+    implementation (libs.rxjava)
+
 
     /** CameraX **/
     implementation(libs.androidx.camera.video)

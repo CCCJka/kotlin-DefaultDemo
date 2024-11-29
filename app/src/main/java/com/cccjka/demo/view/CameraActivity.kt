@@ -29,6 +29,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import com.cccjka.demo.R
+import com.cccjka.demo.databinding.ActivityCameraBinding
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -41,9 +42,7 @@ class CameraActivity: AppCompatActivity() {
 
     private val TAG = CameraActivity::class.java.name
 
-    private lateinit var btn_capture:Button
-    private lateinit var previewView: PreviewView
-    private lateinit var tv_status: TextView
+    private lateinit var viewBinding: ActivityCameraBinding
 
     private var imageCapture: ImageCapture? = null
     private var videoCapture: VideoCapture<Recorder>? = null
@@ -51,7 +50,8 @@ class CameraActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_camera)
+        viewBinding = ActivityCameraBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
         initAll()
     }
 
@@ -65,9 +65,7 @@ class CameraActivity: AppCompatActivity() {
     }
 
     private fun intView(){
-        btn_capture = findViewById(R.id.btn_capture)
-        previewView = findViewById(R.id.viewFinder)
-        tv_status = findViewById(R.id.tv_recording_status)
+
     }
 
     /** 权限申请 */
@@ -99,7 +97,7 @@ class CameraActivity: AppCompatActivity() {
             val preview = Preview.Builder()
                 .build()
                 .also {
-                    it.setSurfaceProvider(previewView.surfaceProvider)
+                    it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
                 }
 
             val recorder = Recorder.Builder()
@@ -115,11 +113,11 @@ class CameraActivity: AppCompatActivity() {
             try {
                 cameraProvider.unbindAll()
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
-                btn_capture.setOnClickListener{
+                viewBinding.btnCapture.setOnClickListener{
                     cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
                     takePhoto()
                 }
-                btn_capture.setOnLongClickListener{
+                viewBinding.btnCapture.setOnLongClickListener{
                     cameraProvider.bindToLifecycle(this, cameraSelector, preview, videoCapture)
                     captureVideo()
                     true
@@ -210,7 +208,7 @@ class CameraActivity: AppCompatActivity() {
             .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
                 when(recordEvent) {
                     is VideoRecordEvent.Start -> {
-                        tv_status.text = "开始录像..."
+                        viewBinding.tvRecordingStatus.text = "开始录像..."
                     }
                     is VideoRecordEvent.Finalize -> {
                         if (!recordEvent.hasError()) {
@@ -225,7 +223,7 @@ class CameraActivity: AppCompatActivity() {
                             Log.e(TAG, "Video capture ends with error: " +
                                     "${recordEvent.error}")
                         }
-                        tv_status.text = ""
+                        viewBinding.tvRecordingStatus.text = ""
                     }
                 }
             }

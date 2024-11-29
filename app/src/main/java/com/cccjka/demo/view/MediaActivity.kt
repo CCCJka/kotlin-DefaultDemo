@@ -18,16 +18,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toFile
 import androidx.core.net.toUri
 import com.cccjka.demo.R
+import com.cccjka.demo.databinding.ActivityMediaBinding
 import java.io.File
 
 class MediaActivity: AppCompatActivity() {
 
     val REQUEST_CODE_GET_CONTENT = 1001
 
-    //    private lateinit var rl_media: RelativeLayout
-    private lateinit var sv_media: SurfaceView
-    private lateinit var btn_select: Button
-    private lateinit var btn_show_select: Button
+    private lateinit var viewBinding: ActivityMediaBinding
 
     var uri: Uri ?= null
     var mediaPlayer = MediaPlayer().apply {
@@ -59,24 +57,22 @@ class MediaActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_media)
+        viewBinding = ActivityMediaBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
         initAll()
     }
 
     private fun initAll(){
-//        rl_media = findViewById(R.id.rl_media)
         initView()
         initData()
     }
 
     private fun initView() {
-        sv_media = findViewById(R.id.sv_media)
-        btn_select = findViewById(R.id.btn_select)
-        btn_show_select = findViewById(R.id.btn_show_select)
+
     }
 
     private fun initData(){
-        btn_select.setOnClickListener{
+        viewBinding.btnSelect.setOnClickListener{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "*/*" //不限制选择的文件类型
 //            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)    //多选
@@ -84,10 +80,10 @@ class MediaActivity: AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_GET_CONTENT)
         }
 
-        btn_show_select.setOnClickListener{
-            btn_select.visibility = View.VISIBLE
-            btn_show_select.visibility = View.GONE
-            sv_media.visibility = View.GONE
+        viewBinding.btnShowSelect.setOnClickListener{
+            viewBinding.btnSelect.visibility = View.VISIBLE
+            viewBinding.btnShowSelect.visibility = View.GONE
+            viewBinding.svMedia.visibility = View.GONE
             mediaPlayer.stop()
         }
 
@@ -106,13 +102,13 @@ class MediaActivity: AppCompatActivity() {
         if (requestCode == REQUEST_CODE_GET_CONTENT && resultCode == RESULT_OK){
             data?.let {
                 uri = data.data
-                sv_media.holder?.let{
-                    sv_media.holder.removeCallback(surfaceCallBack)
+                viewBinding.svMedia.holder?.let{
+                    viewBinding.svMedia.holder.removeCallback(surfaceCallBack)
                 }
-                sv_media.holder.addCallback(surfaceCallBack)
-                btn_select.visibility = View.GONE
-                sv_media.visibility = View.VISIBLE
-                btn_show_select.visibility = View.VISIBLE
+                viewBinding.svMedia.holder.addCallback(surfaceCallBack)
+                viewBinding.btnSelect.visibility = View.GONE
+                viewBinding.svMedia.visibility = View.VISIBLE
+                viewBinding.btnShowSelect.visibility = View.VISIBLE
             }
 
         }

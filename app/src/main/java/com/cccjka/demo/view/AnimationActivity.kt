@@ -5,34 +5,23 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.cccjka.demo.R
 import com.cccjka.demo.adapter.LeftSideMenuAdapter
+import com.cccjka.demo.databinding.ActivityAnimationBinding
 import com.cccjka.demo.dialog.ShareDialog
 import com.cccjka.demo.fragment.MainFragment
 import com.cccjka.demo.fragment.PersonInfoFragment
 import com.cccjka.demo.fragment.SettingFragment
-import com.cccjka.demo.utils.CommonUtils
 import com.cccjka.demo.viewmodel.AnimationViewModel
 
 class AnimationActivity: AppCompatActivity(){
 
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var rv_item: RecyclerView
-    private lateinit var btn_log_out: Button
-
-    private lateinit var iv_main_fragment: ImageView
+    private lateinit var viewBinding: ActivityAnimationBinding
 
     private lateinit var viewmodel: AnimationViewModel
 
@@ -44,7 +33,8 @@ class AnimationActivity: AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_animation)
+        viewBinding = ActivityAnimationBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
         initAll()
     }
 
@@ -54,10 +44,6 @@ class AnimationActivity: AppCompatActivity(){
     }
 
     private fun initView() {
-        drawerLayout = findViewById(R.id.drawerlayout)
-        btn_log_out = findViewById(R.id.btn_log_out)
-        rv_item = findViewById(R.id.rv_item)
-        iv_main_fragment = findViewById(R.id.iv_main_fragment)
         personInfoFragment = PersonInfoFragment()
         settingFragment = SettingFragment()
         mainFragment = MainFragment()
@@ -68,10 +54,10 @@ class AnimationActivity: AppCompatActivity(){
         viewmodel = AnimationViewModel()
         val leftSideMenuAdapter = LeftSideMenuAdapter(list)
         val linearLayout = LinearLayoutManager(this)
-        rv_item.layoutManager = linearLayout
-        rv_item.adapter =  leftSideMenuAdapter
+        viewBinding.rvItem.layoutManager = linearLayout
+        viewBinding.rvItem.adapter =  leftSideMenuAdapter
 
-        btn_log_out.setOnClickListener{
+        viewBinding.btnLogOut.setOnClickListener{
             logOut()
         }
 
@@ -82,14 +68,12 @@ class AnimationActivity: AppCompatActivity(){
                     "设置" -> replaceFragment(settingFragment)
                     "分享" -> showShareingDialog()
                 }
-                drawerLayout.close()
+                viewBinding.drawerlayout.close()
             }
         })
-
-        iv_main_fragment.setOnClickListener{
+        viewBinding.ivMainFragment.setOnClickListener{
             replaceFragment(mainFragment)
         }
-
     }
 
     private fun showShareingDialog() {
