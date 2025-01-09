@@ -1,5 +1,6 @@
 package com.cccjka.demo.net
 
+import android.content.Context
 import android.os.Build
 import com.cccjka.demo.application.MyApplication
 import com.cccjka.demo.common.BaseInfo
@@ -7,7 +8,10 @@ import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -17,7 +21,7 @@ object OkhttpClient {
         getRetrofit().create(api::class.java)
     }
 
-    private var token:String by Preference("token","")
+    private var token = ""
 
     private fun getRetrofit(): Retrofit {
         // 获取retrofit的实例
@@ -27,7 +31,6 @@ object OkhttpClient {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     }
 
     private fun getOkHttpClient(): OkHttpClient {
@@ -35,11 +38,9 @@ object OkhttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         //可以设置请求过滤的水平,body,basic,headers
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-
         //设置 请求的缓存的大小跟位置
         val cacheFile = File(MyApplication.context.cacheDir, "cache")
         val cache = Cache(cacheFile, 1024 * 1024 * 50) //50Mb 缓存的大小
-
         return OkHttpClient.Builder()
             .addInterceptor(addQueryParameterInterceptor())  //参数添加
             .addInterceptor(addHeaderInterceptor()) // token过滤

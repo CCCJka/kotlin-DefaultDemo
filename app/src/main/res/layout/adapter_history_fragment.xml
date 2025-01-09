@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="10dp">
+
+    <ImageView
+        android:id="@+id/iv_history_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/tv_history_name"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@+id/iv_history_img" />
+
+    <TextView
+        android:id="@+id/tv_history_description"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/iv_history_img"
+        android:layout_below="@+id/tv_history_name"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_history_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/iv_history_img"
+        android:layout_below="@+id/tv_history_description"
+        android:layout_marginTop="5dp"/>
+    
+</RelativeLayout>

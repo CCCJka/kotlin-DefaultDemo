@@ -3,10 +3,12 @@ package com.cccjka.demo.view
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.cccjka.demo.databinding.ActivityMainBinding
+import com.cccjka.demo.db.DbHelper
 import com.cccjka.demo.utils.CommonUtils
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, PackageManager.PERMISSION_GRANTED)
         initView()
         initData()
+
     }
 
     private fun initView() {

@@ -1,16 +1,17 @@
 package com.cccjka.demo.net
 
-import android.database.Observable
-import com.cccjka.demo.response.MediaBean
+
+import com.cccjka.demo.response.RequestVideoBean
+import io.reactivex.Observable
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface api {
 
-    @GET("v2/feed?")
-    fun getFirstHomeData(@Query("num") num:Int): Observable<MediaBean>
+    //首页
+    @GET("v4/tabs/selected")
+    fun getSelectInfo(): Observable<RequestVideoBean>
 
-    @GET("v5/index/tab/allRec")
-    fun getEditorPick(): Observable<PickBean>
+    @GET("v4/discovery/hot")
+    fun getHotPoiont(): Observable<RequestVideoBean>
 
 }

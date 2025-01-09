@@ -1,8 +1,10 @@
 package com.cccjka.demo.utils
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
-import com.cccjka.demo.view.CameraActivity
+import com.cccjka.demo.application.MyApplication
+import com.cccjka.demo.db.DbHelper
 import com.google.gson.Gson
 
 object CommonUtils {

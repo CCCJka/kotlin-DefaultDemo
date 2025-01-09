@@ -6,20 +6,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/fragment_main_title"
+        android:text="@string/fragment_hot_title"
         android:textSize="20sp"
         android:background="@color/light_green"
         android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main_content"
+        android:id="@+id/rv_hot_point"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:paddingTop="50dp"/>
 
     <Button
-        android:id="@+id/btn_main_to_top"
+        android:id="@+id/btn_hot_to_top"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="end|bottom"

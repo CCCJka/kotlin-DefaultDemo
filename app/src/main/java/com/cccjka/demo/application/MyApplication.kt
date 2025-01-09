@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import com.cccjka.demo.db.DbHelper
 import kotlin.properties.Delegates
 
 class MyApplication: Application() {
@@ -12,16 +13,16 @@ class MyApplication: Application() {
     companion object {
         private val TAG = "MyApplication"
         var context: Context by Delegates.notNull()
-            private set
     }
 
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
+        DbHelper.get().init()
     }
 
-    private val mActivityLifecycleCallbacks = object : Application.ActivityLifecycleCallbacks {
+    private val mActivityLifecycleCallbacks = object : ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             Log.d(TAG, "onCreated: " + activity.componentName.className)
         }

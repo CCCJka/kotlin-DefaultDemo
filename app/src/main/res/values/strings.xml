@@ -2,6 +2,8 @@
     <string name="app_name">DefaultDemo</string>
     <string name="camera_status">单击拍照/长按录像</string>
     <string name="fragment_main_title">浏览页面</string>
+    <string name="fragment_hot_title">今日热点</string>
+    <string name="fragment_history_title">观看历史</string>
     <string name="load_web">加载网页</string>
     <string name="camera">相机</string>
     <string name="animation">动画</string>

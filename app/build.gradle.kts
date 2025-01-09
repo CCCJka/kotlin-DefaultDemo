@@ -50,11 +50,17 @@ dependencies {
 
     /** 网络框架*/
     implementation(libs.okhttp)
-    implementation (libs.retrofit)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
     /** RxJava*/
-    implementation (libs.rxjava)
+    implementation(libs.rxkotlin)
+    implementation(libs.adapter.rxjava2)
+    implementation(libs.rxandroid)
 
+    /** Glide*/
+    implementation(libs.glide)
 
     /** CameraX **/
     implementation(libs.androidx.camera.video)
@@ -70,6 +76,8 @@ dependencies {
     /** Gson*/
     implementation(libs.gson)
 
+    /** Player*/
+    implementation (libs.gsyvideoplayer)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
