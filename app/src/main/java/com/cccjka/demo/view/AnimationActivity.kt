@@ -28,6 +28,7 @@ import com.cccjka.demo.fragment.HotFragment
 import com.cccjka.demo.fragment.MainFragment
 import com.cccjka.demo.fragment.PersonInfoFragment
 import com.cccjka.demo.fragment.SettingFragment
+import com.cccjka.demo.navigator.FragmentNavigator
 import kotlinx.coroutines.delay
 
 class AnimationActivity: AppCompatActivity(){
@@ -39,6 +40,7 @@ class AnimationActivity: AppCompatActivity(){
     private var mainFragment: MainFragment? = MainFragment()
     private var hotFragment: HotFragment? = HotFragment()
     private var historyFragment: HistoryFragment? = HistoryFragment()
+    private val fragmentList: ArrayList<Any?> = arrayListOf(mainFragment, hotFragment, historyFragment)
 
     val list = listOf("个人信息", "设置", "分享")
 
@@ -46,12 +48,19 @@ class AnimationActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         viewBinding = ActivityAnimationBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-        initAll()
+        if (savedInstanceState == null){
+            initAll()
+        }
     }
 
     private fun initAll(){
         initView()
         initData()
+        viewBinding.btnToTop.setOnClickListener{
+            mainFragment?.scrollToTop()
+            hotFragment?.scrollToTop()
+            historyFragment?.scrollToTop()
+        }
     }
 
     private fun initView() {
@@ -60,8 +69,16 @@ class AnimationActivity: AppCompatActivity(){
         mainFragment = MainFragment()
         hotFragment = HotFragment()
         historyFragment = HistoryFragment()
-        setImageBackground(R.drawable.home_click)
-        replaceFragment(mainFragment!!)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.rl_fragment_container, mainFragment!!, "main")
+            .hide(mainFragment!!)
+            .add(R.id.rl_fragment_container, hotFragment!!, "hot")
+            .hide(hotFragment!!)
+            .add(R.id.rl_fragment_container, historyFragment!!, "history")
+            .hide(historyFragment!!)
+            .commit()
+        setFragment(R.drawable.home_click)
+//        replaceFragment(mainFragment!!)
     }
 
     private fun initData(){
@@ -85,35 +102,38 @@ class AnimationActivity: AppCompatActivity(){
             }
         })
         viewBinding.ivMainFragment.setOnClickListener{
-            setImageBackground(R.drawable.home_click)
-            mainFragment?.let { it1 -> replaceFragment(it1) }
+            setFragment(R.drawable.home_click)
+//            mainFragment?.let { it1 -> replaceFragment(it1) }
         }
         viewBinding.ivHotFragment.setOnClickListener{
-            setImageBackground(R.drawable.hot_click)
-            hotFragment?.let { it1 -> replaceFragment(it1) }
+            setFragment(R.drawable.hot_click)
+//            hotFragment?.let { it1 -> replaceFragment(it1) }
         }
         viewBinding.ivHistoryFragment.setOnClickListener{
-            setImageBackground(R.drawable.history_click)
-            historyFragment?.let { it1 -> replaceFragment(it1) }
+            setFragment(R.drawable.history_click)
+//            historyFragment?.let { it1 -> replaceFragment(it1) }
         }
     }
 
-    private fun setImageBackground(drawableId: Int){
+    private fun setFragment(drawableId: Int){
         when(drawableId){
             R.drawable.home_click -> {
                 Glide.with(this).load(R.drawable.home_click).into(viewBinding.ivMainFragment)
                 Glide.with(this).load(R.drawable.hotpoint).into(viewBinding.ivHotFragment)
                 Glide.with(this).load(R.drawable.history).into(viewBinding.ivHistoryFragment)
+                mainFragment?.let { changeFragment(it) }
             }
             R.drawable.hot_click -> {
                 Glide.with(this).load(R.drawable.home).into(viewBinding.ivMainFragment)
                 Glide.with(this).load(R.drawable.hot_click).into(viewBinding.ivHotFragment)
                 Glide.with(this).load(R.drawable.history).into(viewBinding.ivHistoryFragment)
+                hotFragment?.let { changeFragment(it) }
             }
             R.drawable.history_click -> {
                 Glide.with(this).load(R.drawable.home).into(viewBinding.ivMainFragment)
                 Glide.with(this).load(R.drawable.hotpoint).into(viewBinding.ivHotFragment)
                 Glide.with(this).load(R.drawable.history_click).into(viewBinding.ivHistoryFragment)
+                historyFragment?.let { changeFragment(it) }
             }
         }
     }
@@ -131,21 +151,37 @@ class AnimationActivity: AppCompatActivity(){
     }
 
 
+    /**
+    * replace函数会将fragment销毁，故不适用
+    * */
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.fragment_in, R.anim.fragment_fade, R.anim.fragment_appear, R.anim.fragment_out)
             .replace(R.id.rl_fragment_container, fragment)
+            .commit()
+    }
+
+    private fun changeFragment(fragment: Fragment){
+        val tag = fragment.tag
+        var code  = when(tag){
+            "main" -> 1
+            "hot" -> 2
+            "history" -> 3
+            else -> 0
+        }
+        if (code == 1){
+
+        }
+        supportFragmentManager.beginTransaction()
+            .show(fragment)
+            .hide(hotFragment!!)
+            .hide(historyFragment!!)
+            .setCustomAnimations(R.anim.fragment_in, R.anim.fragment_fade, R.anim.fragment_appear, R.anim.fragment_out)
             .commit()
     }
 
     private fun logOut(){
         Toast.makeText(this, "log out", LENGTH_LONG).show()
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        when(keyCode){
-            KeyEvent.KEYCODE_BACK -> finish()
-        }
-        return super.onKeyDown(keyCode, event)
     }
 
     private fun fragmentDestroy() {
@@ -164,6 +200,5 @@ class AnimationActivity: AppCompatActivity(){
     override fun onDestroy() {
         super.onDestroy()
         fragmentDestroy()
-        logOut()
     }
 }

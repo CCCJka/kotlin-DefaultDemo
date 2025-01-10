@@ -72,4 +72,14 @@ class FragmentVideoAdapter(private val data: List<String>): RecyclerView.Adapter
         super.onViewRecycled(holder)
     }
 
+    override fun onViewDetachedFromWindow(holder: ViewHolder.MainFragmentViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        val img = player.thumbImageView
+        Glide.with(holder.itemView.context).clear(img)
+    }
+
+    fun onDestroy(){
+        player.release()
+    }
+
 }

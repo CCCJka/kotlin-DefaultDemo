@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cccjka.demo.adapter.FragmentHistoryAdapter
-import com.cccjka.demo.adapter.FragmentVideoAdapter
 import com.cccjka.demo.databinding.FragmentHistoryBinding
+import com.cccjka.demo.navigator.FragmentNavigator
+import com.cccjka.demo.navigator.RequestPageNavigator
 import com.cccjka.demo.viewmodel.HistoryFragmentViewModel
 
-class HistoryFragment: Fragment() {
+class HistoryFragment: Fragment(), RequestPageNavigator {
 
     private lateinit var viewBinding: FragmentHistoryBinding
     private lateinit var viewModel: HistoryFragmentViewModel
@@ -39,5 +40,13 @@ class HistoryFragment: Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.onDestroy()
+    }
+
+    override fun loadPageInfo(list: List<String>) {
+
+    }
+
+    fun scrollToTop() {
+        viewBinding.rvHistory.smoothScrollToPosition(0)
     }
 }

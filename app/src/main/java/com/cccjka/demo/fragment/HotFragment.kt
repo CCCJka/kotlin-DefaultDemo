@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cccjka.demo.adapter.FragmentVideoAdapter
 import com.cccjka.demo.databinding.FragmentHotBinding
+import com.cccjka.demo.navigator.FragmentNavigator
 import com.cccjka.demo.navigator.RequestPageNavigator
 import com.cccjka.demo.viewmodel.HotFragmentViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -43,6 +44,10 @@ class HotFragment: Fragment(), RequestPageNavigator {
             viewBinding.rvHotPoint.adapter = adapter
             viewBinding.rvHotPoint.setItemViewCacheSize(100);
         }
+    }
+
+    fun scrollToTop() {
+        viewBinding.rvHotPoint.smoothScrollToPosition(0)
     }
 
     override fun onDestroy() {

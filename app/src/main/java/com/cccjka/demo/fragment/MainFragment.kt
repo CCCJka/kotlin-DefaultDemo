@@ -1,6 +1,7 @@
 package com.cccjka.demo.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cccjka.demo.adapter.FragmentVideoAdapter
 import com.cccjka.demo.databinding.FragmentMainBinding
-import com.cccjka.demo.db.DbHelper
 import com.cccjka.demo.navigator.RequestPageNavigator
 import com.cccjka.demo.viewmodel.MainFragmentViewModel
-import com.shuyu.gsyvideoplayer.listener.GSYStateUiListener
-import com.shuyu.gsyvideoplayer.video.base.GSYVideoView.CURRENT_STATE_PLAYING
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,9 +31,6 @@ class MainFragment: Fragment(), RequestPageNavigator {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.btnMainToTop.setOnClickListener{
-            viewBinding.rvMainContent.smoothScrollToPosition(0)
-        }
         init()
     }
 
@@ -54,9 +49,14 @@ class MainFragment: Fragment(), RequestPageNavigator {
         }
     }
 
+    fun scrollToTop() {
+        viewBinding.rvMainContent.smoothScrollToPosition(0)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         adapter.pauseVideo()
+        adapter.onDestroy()
         viewmodel.onDestroy()
     }
 }

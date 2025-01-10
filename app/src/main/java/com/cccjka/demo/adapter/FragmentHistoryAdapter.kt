@@ -33,4 +33,9 @@ class FragmentHistoryAdapter(val data: List<HistoryBean>): RecyclerView.Adapter<
         holder.description.text = info.description
         holder.time.text = time
     }
+
+    override fun onViewDetachedFromWindow(holder: ViewHolder.HistoryFragmentViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        Glide.with(holder.itemView.context).clear(holder.img)
+    }
 }
