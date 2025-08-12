@@ -13,6 +13,7 @@ object CommonUtils {
 
     fun<T> navigation(context: Context, targetClass: Class<T>){
         val intent = Intent(context, targetClass)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         context.startActivity(intent)
     }
 

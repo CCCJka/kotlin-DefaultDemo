@@ -1,13 +1,13 @@
 package com.cccjka.demo.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cccjka.demo.R
 
 class LeftSideMenuAdapter(private val name: List<String>): RecyclerView.Adapter<ViewHolder.LeftSideMenuViewHolder>() {
+
+    private var listener: clickListener? = null
 
     override fun onBindViewHolder(holder: ViewHolder.LeftSideMenuViewHolder, position: Int) {
         holder.itemInfo.text = name[position]
@@ -26,8 +26,6 @@ class LeftSideMenuAdapter(private val name: List<String>): RecyclerView.Adapter<
     interface clickListener{
         fun onClick(clickItem: String)
     }
-
-    var listener: clickListener ?= null
 
     fun setOnItemClickListener(clickListener: clickListener){
         this.listener = clickListener

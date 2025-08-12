@@ -25,14 +25,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-        initAll()
-    }
-
-    private fun initAll(){
         ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, PackageManager.PERMISSION_GRANTED)
         initView()
         initData()
-
     }
 
     private fun initView() {

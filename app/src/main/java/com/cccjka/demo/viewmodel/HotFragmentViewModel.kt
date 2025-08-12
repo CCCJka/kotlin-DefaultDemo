@@ -21,7 +21,7 @@ class HotFragmentViewModel(val navigator: RequestPageNavigator): ViewModel() {
                     Log.i("requestHotPoint", "complet")
                 },
                 onNext = {
-                    it?.let { it ->
+                    it?.let {
                         val itemList: List<Item>? = it.itemList
                         val list: ArrayList<String> = arrayListOf()
                         itemList?.let { itemInfo ->

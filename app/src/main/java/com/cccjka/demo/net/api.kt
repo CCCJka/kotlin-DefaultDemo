@@ -11,6 +11,7 @@ interface api {
     @GET("v4/tabs/selected")
     fun getSelectInfo(): Observable<RequestVideoBean>
 
+    //热门
     @GET("v4/discovery/hot")
     fun getHotPoiont(): Observable<RequestVideoBean>
 

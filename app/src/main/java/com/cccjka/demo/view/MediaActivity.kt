@@ -27,7 +27,7 @@ class MediaActivity: AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMediaBinding
 
-    var uri: Uri ?= null
+    var uri: Uri? = null
     var mediaPlayer = MediaPlayer().apply {
         setAudioAttributes(     //设置音频
             AudioAttributes.Builder()

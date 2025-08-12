@@ -16,6 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:paddingTop="50dp"/>
+        android:layout_marginTop="35dp"/>
+
+    <com.cccjka.demo.customUI.VideoPlayerView
+        android:id="@+id/show_click_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone"/>
 
 </FrameLayout>

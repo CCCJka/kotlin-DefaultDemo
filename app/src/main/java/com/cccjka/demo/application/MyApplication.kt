@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import com.bumptech.glide.Glide
 import com.cccjka.demo.db.DbHelper
 import kotlin.properties.Delegates
 

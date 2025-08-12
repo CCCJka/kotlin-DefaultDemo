@@ -12,8 +12,9 @@ import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 class ViewHolder {
 
     class MainFragmentViewHolder(view: View): RecyclerView.ViewHolder(view){
-        var gsyPlayer = view.findViewById<RelativeLayout>(R.id.gsy_player)
+        var videoPic = view.findViewById<ImageView>(R.id.videoPic)
         var title = view.findViewById<TextView>(R.id.tv_fragment_title)
+        var auth = view.findViewById<TextView>(R.id.tv_fragment_auth)
         var description = view.findViewById<TextView>(R.id.tv_fragment_description)
     }
 
