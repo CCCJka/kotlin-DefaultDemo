@@ -1,12 +1,18 @@
 ### 加载网页：
 
-![image-20250812120056848](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812120056848.png)
+输入网址
+
+![](mdPic\img-input-url.png)
+
+加载网址
+
+![](mdPic\img-load-finish.png)
 
 ### 音视频：
 
 选择文件后进行播放
 
-![image-20250812120656456](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812120656456.png)
+![](mdPic\img-play-media.png)
 
 
 
@@ -16,25 +22,25 @@
 
 #### 推荐视频：
 
-![image-20250812120849863](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812120849863.png)
+![](mdPic\img-recommand.png)
 
 
 
 #### 播放视频：
 
-![image-20250812120919733](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812120919733.png)
+![](mdPic\img-play-view.png)
 
 
 
 #### 今日热点：
 
-![image-20250812120939670](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812120939670.png)
+![](mdPic\img-hot.png)
 
 
 
 #### 历史记录：
 
-![image-20250812120952781](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812120952781.png)
+![](mdPic\img-history.png)
 
 
 
@@ -42,7 +48,7 @@
 
 使用相机进行拍照、录像
 
-![image-20250812121030314](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20250812121030314.png)
+![](mdPic\img-camera.png)
 
 ## 声明
 **项目中的 API 均来自开眼视频，纯属学习交流使用，不得用于商业用途！**
